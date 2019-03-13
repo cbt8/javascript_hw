@@ -6,7 +6,7 @@ tableData.forEach((ufo)=>{
     console.log(ufo);
     var row = tbody.append("tr");
     Object.entries(ufo).forEach(([key, value])=> {
-             console.log(key, value);
+             //console.log(key, value);
              var cell = tbody.append("td");
              cell.text(value);
            });
@@ -18,13 +18,41 @@ tableData.forEach((ufo)=>{
 var button = d3.select("#filter-btn");
 var inputField = d3.select("#datetime");
 
+inputField.on("change", function() {
+    var newText = d3.event.target.value;
+    console.log(newText)
+});
+
+
+//everything below this is in progress
+
+function dateFilter(date){
+return date === newText
+};
+
+
+// this is an arrow function from the previous homework assignment
+
+//var filteredData = people.filter(person => person.bloodType === inputValue)
+
+
 button.on("click", function() {
-    d3.select(".giphy-me").html("<img src='https://gph.to/2Krfn0w' alt='giphy'>");
-  });
+    
+    tableData.filter(dateFilter).forEach((ufo)=>{
+        console.log(ufo);
+        var row = tbody.append("tr");
+        Object.entries(ufo).forEach(([key, value])=> {
+                 console.log(key, value);
+                 var cell = tbody.append("td");
+                 cell.text(value);
+               });
+              });
+              });
+    
+    
+ // });
   
   // // Input fields can trigger a change event when new text is entered.
-  inputField.on("change", function() {
-    var newText = d3.event.target.value;
-    console.log(newText);
-  });
+
+  //});
   
